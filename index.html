@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title> Rock Paper Scissors Game!</title>
+  
+</head>
+<body>
+
+ 
+
+  <script>
+
+let computerPlay = function (){
+                let player =["Rock", "Paper", "Scissors"];
+                return player[Math.floor(Math.random()*player.length)];
+            }
+           
+           
+            let playerSelection = function() {return prompt("Do you choose Rock, Paper or Scissors? Input Your Choice!");}
+             
+             let ComputerSelection = computerPlay();
+            
+            let singleRound = function (playerSelection, computerPlay){
+                let result = 0;
+                if (playerSelection.toLowerCase() === "rock"){
+                    if( computerPlay === "Paper"){
+                        console.log("you lose! Paper wins Rock.")
+                        result--;
+                    }
+                    else if( computerPlay === 'Scissors'){
+                        console.log('You win! Rock beats scissors')
+                        result++;
+                    } 
+                    else if ( computerPlay === "Rock") {
+                        console.log("Rock vs Rock, no one win this round")
+                        result;
+                    }
+                }
+                else if (playerSelection.toLowerCase() === "paper"){
+                    if( computerPlay === "Paper"){
+                    console.log("Paper vs Paper no one wins!")
+                    result;
+                    }
+                    else if( computerPlay === 'Scissors'){
+                    console.log("You lose! Scissors beats paper")
+                    result--;
+                    } 
+                    else if ( computerPlay === "Rock") {
+                    console.log("You win!")
+                    result++;
+                    }
+                }
+                else if (playerSelection.toLowerCase() === 'scissors'){
+                    if( computerPlay === "Paper"){
+                    console.log("you win!")
+                    result++;
+                    }
+                    else if( computerPlay === 'Scissors'){
+                    console.log("No winner for this round!")
+                    result;
+                    } 
+                    else if ( computerPlay === "Rock") {
+                    console.log("You lose!")
+                    result--;
+                    }
+                }
+                else{
+            prompt("This is not a correct input. Please enter the correct input:  ")
+                }
+                
+            return result;
+            }
+            
+            let game = function(){
+                let newResult = 0;
+                
+                for (let i = 0; i<5; i++) {
+                   newResult += singleRound(playerSelection(), computerPlay());
+                   }
+    
+              if(newResult > 0){
+                  return 'You Win!';
+              } 
+              else if (newResult < 0){
+                    return 'Game Over : You lose!';
+              }
+              else {
+                  return "no winner!"
+              }
+            }
+            console.log(game());
+  </script>
+</body>
+</html>
